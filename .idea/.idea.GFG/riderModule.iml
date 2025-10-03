@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.accessibility" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.ai" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.androidjni" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.animation" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.assetbundle" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.audio" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.cloth" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.director" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.hierarchycore" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.imageconversion" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.imgui" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.jsonserialize" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.particlesystem" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.physics" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.physics2d" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.screencapture" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.subsystems" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.terrain" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.terrainphysics" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.tilemap" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.ui" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.uielements" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.umbra" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.unityanalytics" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.unitywebrequest" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.unitywebrequestassetbundle" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.unitywebrequestaudio" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.unitywebrequesttexture" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.unitywebrequestwww" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.vehicles" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.video" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.vr" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.wind" />
+    <content url="file://C:/Unity/6000.2.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.modules.xr" />
+    <content url="file://$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.collab-proxy@2.9.3" />
+    <content url="file://$MODULE_DIR$/../.." />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

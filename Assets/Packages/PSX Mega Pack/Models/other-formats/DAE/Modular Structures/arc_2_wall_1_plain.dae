@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.4.0 commit date:2022-12-06, commit time:18:46, hash:a95bf1ac01be</authoring_tool>
+    </contributor>
+    <created>2025-09-05T20:11:35</created>
+    <modified>2025-09-05T20:11:35</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="wall_mp_1-effect">
+      <profile_COMMON>
+        <newparam sid="wall_mp_1_png-surface">
+          <surface type="2D">
+            <init_from>wall_mp_1_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="wall_mp_1_png-sampler">
+          <sampler2D>
+            <source>wall_mp_1_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="wall_mp_1_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="wood_painted_white-effect">
+      <profile_COMMON>
+        <newparam sid="wood_painted_white_mp_1_png-surface">
+          <surface type="2D">
+            <init_from>wood_painted_white_mp_1_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="wood_painted_white_mp_1_png-sampler">
+          <sampler2D>
+            <source>wood_painted_white_mp_1_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="wood_painted_white_mp_1_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="wall_mp_1_png" name="wall_mp_1_png">
+      <init_from>wall_mp_1.png</init_from>
+    </image>
+    <image id="wood_painted_white_mp_1_png" name="wood_painted_white_mp_1_png">
+      <init_from>wood_painted_white_mp_1.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="wall_mp_1-material" name="wall_mp_1">
+      <instance_effect url="#wall_mp_1-effect"/>
+    </material>
+    <material id="wood_painted_white-material" name="wood_painted_white">
+      <instance_effect url="#wood_painted_white-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="arc_2_wall_1_plain-mesh" name="arc_2_wall_1_plain">
+      <mesh>
+        <source id="arc_2_wall_1_plain-mesh-positions">
+          <float_array id="arc_2_wall_1_plain-mesh-positions-array" count="114">0.1999988 0 -0.4 -0.2000007 0 -0.4 -0.2000007 0 0 0.1999988 0 0 0.1999988 0 -2.6 -0.2000007 0 -2.6 -0.2000007 0 -3 0.1999988 0 -3 -0.2000007 3 -1.3411e-7 0.1999988 3 -1.3411e-7 -0.2000007 3 -3 0.1999988 3 -3 0.1999988 1.5 -0.4 0.1999988 2.6 -1.5 0.1999988 1.784701 -0.4374818 0.1999988 2.05 -0.5473722 0.1999988 2.277817 -0.7221827 0.1999988 2.452628 -0.9500002 0.1999988 2.562518 -1.215299 -0.2000007 1.5 -0.4 -0.2000007 2.562518 -1.215299 -0.2000007 2.452628 -0.9500002 -0.2000007 2.277817 -0.7221827 -0.2000007 2.05 -0.5473722 -0.2000007 1.784701 -0.4374818 0.1999988 1.5 -2.6 0.1999988 2.562518 -1.784701 0.1999988 2.452628 -2.05 0.1999988 2.277817 -2.277818 0.1999988 2.05 -2.452628 0.1999988 1.784701 -2.562519 -0.2000007 1.5 -2.6 -0.2000007 2.6 -1.5 -0.2000007 1.784701 -2.562519 -0.2000007 2.05 -2.452628 -0.2000007 2.277817 -2.277818 -0.2000007 2.452628 -2.05 -0.2000007 2.562518 -1.784701</float_array>
+          <technique_common>
+            <accessor source="#arc_2_wall_1_plain-mesh-positions-array" count="38" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="arc_2_wall_1_plain-mesh-normals">
+          <float_array id="arc_2_wall_1_plain-mesh-normals-array" count="162">1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 -0.06540322 -0.997859 0 1.58946e-7 1 0 -0.06540286 0.997859 0 -1 -6.7456e-7 0 -0.9659258 -0.2588194 0 -1 5.6931e-7 0 -0.9659258 -0.2588194 0 -0.8660254 -0.5000001 0 -0.8660258 -0.4999997 0 -0.7071067 -0.7071068 0 -0.7071068 -0.7071068 0 -0.4999999 -0.8660255 0 -0.2588192 -0.9659259 0 -0.2588192 -0.9659259 0 -0.06540328 -0.997859 0 -0.9659258 0.2588194 0 -0.9659258 0.2588194 0 -0.8660253 0.5000001 0 -0.8660258 0.4999996 0 -0.7071068 0.7071068 0 -0.7071068 0.7071068 0 -0.4999999 0.8660256 0 -0.4999999 0.8660256 0 -0.258819 0.9659259 0 -0.2588189 0.9659259 0 -0.06540292 0.997859 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0</float_array>
+          <technique_common>
+            <accessor source="#arc_2_wall_1_plain-mesh-normals-array" count="54" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="arc_2_wall_1_plain-mesh-map-0">
+          <float_array id="arc_2_wall_1_plain-mesh-map-0-array" count="372">0.6209678 0.8666667 0.6929083 0.8541729 1 0.9999999 0.2419354 1 1 0.9999999 0.6209678 0.8666667 0.7739247 0 0.8749999 0.4999999 0.8749999 0 0.8749999 0 0.7739247 0.4999999 0.7739247 0 0.6209678 1 0.5490272 0.8666667 0.6209678 0.8666667 0.5490272 1 0.4819893 0.8666668 0.5490272 0.8666667 0.4819892 1 0.3430107 0.8666668 0.4819893 0.8666668 0.8749999 0.8666666 0.7739247 0.6833333 0.7739247 0.8666666 0.875 0.6833333 0.7739247 0.5949003 0.7739247 0.6833333 0.8749998 0.5949003 0.7739247 0.5 0.7739247 0.5949003 0.6209678 0.8666667 0.6929083 0.9999999 0.6209678 1 0.6929083 0.8666667 0.7599462 0.9999999 0.6929083 0.9999999 0.7599462 0.8666667 0.8989247 0.9999999 0.7599462 0.9999999 0.7739247 0.8666666 0.8749999 0.6833333 0.8749999 0.8666666 0.7739247 0.6833333 0.8749999 0.5949003 0.8749999 0.6833333 0.7739247 0.5949003 0.8749999 0.5 0.8749999 0.5949003 0.2419354 1 0.2419353 1.19209e-7 0.3430107 0.5000001 0.2419353 1.19209e-7 0.3430106 1.19209e-7 0.3430107 0.5000001 0.8989245 0 0.9999999 0 0.8989246 0.5 0.9999999 0 1 0.9999999 0.8989246 0.5 0.2419354 1 0.3430107 0.5000001 0.3524819 0.5949006 0.2419354 1 0.3524819 0.5949006 0.3802498 0.6833335 0.8894536 0.5949004 0.8989246 0.5 1 0.9999999 0.8616856 0.6833335 0.8894536 0.5949004 1 0.9999999 0.2419354 1 0.3802498 0.6833335 0.4244224 0.7592728 0.2419354 1 0.4244224 0.7592728 0.4819893 0.8175428 0.8175132 0.7592727 0.8616856 0.6833335 1 0.9999999 0.7599462 0.8175428 0.8175132 0.7592727 1 0.9999999 0.2419354 1 0.4819893 0.8175428 0.5490272 0.854173 0.2419354 1 0.5490272 0.854173 0.6209678 0.8666667 0.6929083 0.8541729 0.7599462 0.8175428 1 0.9999999 0.2419354 1 0.6209678 0.8666667 1 0.9999999 0.3430106 1.19209e-7 0.2419353 1.19209e-7 0.3430107 0.5000001 0.2419353 1.19209e-7 0.2419354 1 0.3430107 0.5000001 1 0.9999999 0.9999999 0 0.8989247 0.5 0.9999999 0 0.8989245 0 0.8989247 0.5 0.3524819 0.5949005 0.3430107 0.5000001 0.2419354 1 1 0.9999999 0.8989247 0.5 0.8894535 0.5949004 1 0.9999999 0.8894535 0.5949004 0.8616856 0.6833334 0.3802499 0.6833336 0.3524819 0.5949005 0.2419354 1 0.4244225 0.7592728 0.3802499 0.6833336 0.2419354 1 1 0.9999999 0.8616856 0.6833334 0.8175132 0.7592727 1 0.9999999 0.8175132 0.7592727 0.7599462 0.8175428 0.4819892 0.8175428 0.4244225 0.7592728 0.2419354 1 0.5490272 0.854173 0.4819892 0.8175428 0.2419354 1 1 0.9999999 0.7599462 0.8175428 0.6929084 0.854173 0.6209678 0.8666667 0.5490272 0.854173 0.2419354 1 1 0.9999999 0.6929084 0.854173 0.6209678 0.8666667 0.7739247 0 0.7739247 0.5 0.8749999 0.4999999 0.8749999 0 0.8749999 0.5 0.7739247 0.4999999 0.6209678 1 0.5490272 1 0.5490272 0.8666667 0.5490272 1 0.4819892 1 0.4819893 0.8666668 0.4819892 1 0.3430107 1 0.3430107 0.8666668 0.8749999 0.8666666 0.875 0.6833333 0.7739247 0.6833333 0.875 0.6833333 0.8749998 0.5949003 0.7739247 0.5949003 0.8749998 0.5949003 0.8749999 0.4999999 0.7739247 0.5 0.6209678 0.8666667 0.6929083 0.8666667 0.6929083 0.9999999 0.6929083 0.8666667 0.7599462 0.8666667 0.7599462 0.9999999 0.7599462 0.8666667 0.8989247 0.8666667 0.8989247 0.9999999 0.7739247 0.8666666 0.7739247 0.6833333 0.8749999 0.6833333 0.7739247 0.6833333 0.7739247 0.5949003 0.8749999 0.5949003 0.7739247 0.5949003 0.7739247 0.4999999 0.8749999 0.5</float_array>
+          <technique_common>
+            <accessor source="#arc_2_wall_1_plain-mesh-map-0-array" count="186" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="arc_2_wall_1_plain-mesh-vertices">
+          <input semantic="POSITION" source="#arc_2_wall_1_plain-mesh-positions"/>
+        </vertices>
+        <triangles material="wall_mp_1-material" count="62">
+          <input semantic="VERTEX" source="#arc_2_wall_1_plain-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#arc_2_wall_1_plain-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#arc_2_wall_1_plain-mesh-map-0" offset="2" set="0"/>
+          <p>13 0 0 26 1 1 11 2 2 8 3 3 10 4 4 32 5 5 1 6 6 12 7 7 0 6 8 4 8 9 31 9 10 5 8 11 13 10 12 20 11 13 32 12 14 18 13 15 21 14 16 20 11 17 17 15 18 22 16 19 21 14 20 16 17 21 23 18 22 22 16 23 15 18 24 24 19 25 23 18 26 14 20 27 19 21 28 24 19 29 32 12 30 26 22 31 13 10 32 37 23 33 27 24 34 26 22 35 36 25 36 28 26 37 27 24 38 35 27 39 29 28 40 28 26 41 34 29 42 30 30 43 29 28 44 33 31 45 25 32 46 30 30 47 9 33 48 3 34 49 12 35 50 3 34 51 0 36 52 12 35 53 4 1 54 7 1 55 25 1 56 7 1 57 11 2 58 25 1 59 9 33 60 12 35 61 14 37 62 9 33 63 14 37 64 15 38 65 30 1 66 25 1 67 11 2 68 29 1 69 30 1 70 11 2 71 9 33 72 15 38 73 16 1 74 9 33 75 16 1 76 17 39 77 28 1 78 29 1 79 11 2 80 27 1 81 28 1 82 11 2 83 9 33 84 17 39 85 18 40 86 9 33 87 18 40 88 13 0 89 26 1 90 27 1 91 11 2 92 9 33 93 13 0 94 11 2 95 1 41 96 2 41 97 19 42 98 2 41 99 8 3 100 19 42 101 10 4 102 6 43 103 31 44 104 6 43 105 5 45 106 31 44 107 24 46 108 19 42 109 8 3 110 10 4 111 31 44 112 33 47 113 10 4 114 33 47 115 34 48 116 23 41 117 24 46 118 8 3 119 22 41 120 23 41 121 8 3 122 10 4 123 34 48 124 35 49 125 10 4 126 35 49 127 36 50 128 21 51 129 22 41 130 8 3 131 20 52 132 21 51 133 8 3 134 10 4 135 36 50 136 37 53 137 32 5 138 20 52 139 8 3 140 10 4 141 37 53 142 32 5 143 1 6 144 19 21 145 12 7 146 4 8 147 25 32 148 31 9 149 13 10 150 18 13 151 20 11 152 18 13 153 17 15 154 21 14 155 17 15 156 16 17 157 22 16 158 16 17 159 15 18 160 23 18 161 15 18 162 14 20 163 24 19 164 14 20 165 12 7 166 19 21 167 32 12 168 37 23 169 26 22 170 37 23 171 36 25 172 27 24 173 36 25 174 35 27 175 28 26 176 35 27 177 34 29 178 29 28 179 34 29 180 33 31 181 30 30 182 33 31 183 31 9 184 25 32 185</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="arc_2_wall_1_plain" name="arc_2_wall_1_plain" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 -4.37114e-8 -1 0 0 1 -4.37114e-8 0 0 0 0 1</matrix>
+        <instance_geometry url="#arc_2_wall_1_plain-mesh" name="arc_2_wall_1_plain">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="wall_mp_1-material" target="#wall_mp_1-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="wood_painted_white-material" target="#wood_painted_white-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

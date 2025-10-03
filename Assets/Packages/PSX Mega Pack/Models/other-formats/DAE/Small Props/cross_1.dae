@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.4.0 commit date:2022-12-06, commit time:18:46, hash:a95bf1ac01be</authoring_tool>
+    </contributor>
+    <created>2025-09-05T20:11:47</created>
+    <modified>2025-09-05T20:11:47</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="cross_1-effect">
+      <profile_COMMON>
+        <newparam sid="cross_1_png-surface">
+          <surface type="2D">
+            <init_from>cross_1_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="cross_1_png-sampler">
+          <sampler2D>
+            <source>cross_1_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="cross_1_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="cross_1_png" name="cross_1_png">
+      <init_from>cross_1.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="cross_1-material" name="cross_1">
+      <instance_effect url="#cross_1-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="cross_1-mesh" name="cross_1">
+      <mesh>
+        <source id="cross_1-mesh-positions">
+          <float_array id="cross_1-mesh-positions-array" count="60">-0.03099894 0.02339994 -0.1293978 0.03138393 0.02339994 -0.1294842 -0.03157299 0.02339994 -0.06694686 0.03076285 0.02339994 -0.06694692 0.03138393 0.02339994 -0.1994842 0.03138393 3.99991e-4 -0.1994842 -0.03099894 3.99991e-4 -0.1993978 -0.03099894 0.02339994 -0.1993978 -0.131573 0.04340487 -0.06694686 -0.1309989 0.04340487 -0.1293978 -0.131573 0.02339994 -0.06694686 -0.1309989 0.02339994 -0.1293978 0.131384 0.04340487 -0.1294842 0.1307629 0.04340487 -0.06694692 0.1307629 0.02339994 -0.06694692 0.131384 0.02339994 -0.1294842 0.03076285 4.00007e-4 0.173053 -0.03157299 4.00007e-4 0.173053 -0.03157299 0.0234 0.173053 0.03076285 0.0234 0.173053</float_array>
+          <technique_common>
+            <accessor source="#cross_1-mesh-positions-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cross_1-mesh-normals">
+          <float_array id="cross_1-mesh-normals-array" count="138">0 0 1 0 2.8394e-7 1 -1 0 0 0 -1 1.48923e-7 -0.9999319 -0.007183611 -0.009208202 -0.999975 -0.006708502 0.002262711 -0.9999795 -0.006317317 0.001101374 -8.12986e-4 -0.006988406 -0.9999753 -0.002246797 -0.006918072 -0.9999735 -8.0867e-4 -0.006918072 -0.9999758 0 1 0 0 1 0 5.77777e-4 -0.004687547 -0.9999889 -0.005263388 -0.002976238 -0.9999818 0.003047645 0.002486407 -0.9999923 0 1 0 0.9995184 -0.03101694 -0.001021921 0.9991217 -0.04106593 0.008334457 0.9990267 -0.04071354 0.01697129 0 -1 0 0 0 -1 0.9999508 0 0.009930849 -0.9999578 0 -0.009191393 1 0 0 0 -1 0 1.86709e-7 -1.19494e-6 1 0 -1 0 -0.9992117 0.03925073 -0.005958974 -0.9992653 0.03776872 -0.006530344 -0.9992623 0.03779429 -0.006824374 2.46216e-4 0.001644849 -0.9999987 2.46216e-4 0.001644849 -0.9999987 -0.001185417 0.001750349 -0.9999979 0 1 0 0 1 0 0.00355339 -0.001199185 -0.999993 0.001116693 -0.004368066 -0.9999899 -0.006170988 -9.99155e-4 -0.9999805 0 1 0 0.9999785 0.006567835 -1.48863e-4 0.9999759 0.006843805 -0.001187384 0.9999746 0.00693655 -0.001671493 0 -1 0 0.9999507 0 0.009930849 -0.9999578 0 -0.009191393 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#cross_1-mesh-normals-array" count="46" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cross_1-mesh-map-0">
+          <float_array id="cross_1-mesh-map-0-array" count="216">0.5408818 0.2662575 0.5408818 0.04888367 0.4756537 0.04888367 0.5408818 0.4017592 0.4756537 0.04888367 0.4756538 0.619133 0.5938591 0.7855177 0.5938591 0.9358382 0.5197726 0.9358382 0.6041667 0.8055556 0.9583333 0.6527778 0.6041667 0.6527778 0.5938591 0.6514083 0.5197726 0.9358382 0.5197727 0.1360236 0.4756538 0.6178852 0.5408818 0.2649074 0.5408818 0.4005115 0.3958333 0.6527778 0.6041667 0.0972222 0.6041667 0.6527778 0.6041667 0.8055556 0.3958333 0.9652778 0.3958333 0.8055556 0.3958333 0.9513889 0.6041667 0.9027778 0.3958333 0.9027778 0.05208331 0.7986111 0.9479167 0.6527778 0.9479167 0.7986111 0.5408819 0.619133 0.5408818 0.4017592 0.4756538 0.619133 0.5938591 0.6514083 0.5197726 0.9360237 0.5938591 0.7857031 0.3958333 0.6527778 0.04166662 0.8055556 0.3958333 0.8055556 0.5408818 0.4005115 0.5408819 0.6178852 0.4756538 0.6178852 0.3958333 0.9027778 0.6041667 0.9444444 0.3958333 0.9444444 0.6041667 0.9444444 0.3958333 0.9027778 0.3958333 0.9444444 0.6041667 0.9513889 0.3958333 0.9027778 0.6041667 0.9027778 0.5938591 0.6514083 0.5938593 0.1360236 0.5197727 0.1360236 0.5408818 0.04753363 0.5408818 0.2649074 0.4756537 0.04753363 0.6041667 0.1319444 0.3958333 0.9513889 0.6041667 0.9513889 0.5938593 0.1360236 0.5938591 0.6514083 0.5197727 0.1360236 0.5938591 0.9360237 0.5938591 0.7857031 0.5197726 0.9360237 0.5408818 0.4017592 0.5408818 0.2662575 0.4756537 0.04888367 0.6041667 0.8055556 0.9583333 0.8055556 0.9583333 0.6527778 0.5938591 0.6514083 0.5938591 0.7855177 0.5197726 0.9358382 0.4756538 0.6178852 0.4756537 0.04753363 0.5408818 0.2649074 0.3958333 0.6527778 0.3958333 0.0972222 0.6041667 0.0972222 0.6041667 0.8055556 0.6041667 0.9652778 0.3958333 0.9652778 0.3958333 0.9513889 0.6041667 0.9513889 0.6041667 0.9027778 0.05208331 0.7986111 0.05208331 0.6527778 0.9479167 0.6527778 0.5938591 0.6514083 0.5197727 0.1360236 0.5197726 0.9360237 0.3958333 0.6527778 0.04166662 0.6527778 0.04166662 0.8055556 0.3958333 0.9027778 0.6041667 0.9027778 0.6041667 0.9444444 0.6041667 0.9444444 0.6041667 0.9027778 0.3958333 0.9027778 0.6041667 0.9513889 0.3958333 0.9513889 0.3958333 0.9027778 0.6041667 0.1319444 0.3958333 0.1319444 0.3958333 0.9513889</float_array>
+          <technique_common>
+            <accessor source="#cross_1-mesh-map-0-array" count="108" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="cross_1-mesh-vertices">
+          <input semantic="POSITION" source="#cross_1-mesh-positions"/>
+        </vertices>
+        <triangles material="cross_1-material" count="36">
+          <input semantic="VERTEX" source="#cross_1-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#cross_1-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#cross_1-mesh-map-0" offset="2" set="0"/>
+          <p>3 0 0 14 0 1 13 0 2 2 1 3 13 1 4 8 1 5 0 2 6 7 2 7 6 2 8 1 3 9 14 3 10 3 3 11 2 4 12 6 5 13 17 6 14 9 7 15 1 8 16 0 9 17 2 10 18 19 10 19 3 10 20 1 11 21 7 11 22 0 11 23 7 12 24 5 13 25 6 14 26 9 15 27 13 15 28 12 15 29 10 0 30 2 0 31 8 0 32 3 16 33 5 17 34 1 18 35 2 19 36 11 19 37 0 19 38 0 20 39 11 20 40 9 20 41 14 21 42 12 21 43 13 21 44 9 22 45 10 22 46 8 22 47 19 0 48 17 0 49 16 0 50 3 23 51 19 23 52 16 23 53 15 20 54 1 20 55 12 20 56 16 24 57 6 24 58 5 24 59 18 2 60 2 2 61 17 2 62 4 23 63 1 23 64 5 23 65 2 25 66 3 25 67 13 25 68 1 26 69 15 26 70 14 26 71 2 27 72 0 28 73 6 29 74 9 30 75 12 31 76 1 32 77 2 33 78 18 33 79 19 33 80 1 34 81 4 34 82 7 34 83 7 35 84 4 36 85 5 37 86 9 38 87 8 38 88 13 38 89 3 39 90 16 40 91 5 41 92 2 42 93 10 42 94 11 42 95 14 43 96 15 43 97 12 43 98 9 44 99 11 44 100 10 44 101 19 0 102 18 0 103 17 0 104 16 45 105 17 45 106 6 45 107</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="cross_1" name="cross_1" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 -4.37114e-8 -1 0 0 1 -4.37114e-8 0 0 0 0 1</matrix>
+        <instance_geometry url="#cross_1-mesh" name="cross_1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="cross_1-material" target="#cross_1-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
