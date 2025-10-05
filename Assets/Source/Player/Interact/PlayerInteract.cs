@@ -38,18 +38,21 @@ public class PlayerInteract : MonoBehaviour
         Vector3 origin = _camera.transform.position;
         Vector3 direction = _camera.transform.forward;
 
-        Vector3 p1 = origin + _camera.transform.up * (_capsuleHeight * 0.5f);
+        Vector3 p1 = origin;
         Vector3 p2 = origin - _camera.transform.up * (_capsuleHeight * 0.5f);
 
         Debug.DrawRay(origin, direction * _distance, Color.yellow);
 
         if (Physics.CapsuleCast(p1, p2, _capsuleRadius, direction, out RaycastHit hit, _distance, _capsuleLayerMask))
         {
-            if (Physics.Raycast(origin, hit.point - origin, _distance, _rayLayerMask))
+            if (Physics.Raycast(origin, hit.point - origin, out hit, _distance, _rayLayerMask))
             {
+                Debug.DrawRay(origin, (hit.point - origin) * _distance, Color.green);
+
                 if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
                 {
                     _interactable = interactable;
+                    _interactable.Detected();
                     if (interactable is MonoBehaviour awawf)
                     {
                         _interactPosition = awawf.transform.position;
@@ -58,21 +61,20 @@ public class PlayerInteract : MonoBehaviour
                     return;
                 }
             }
-
-            Debug.DrawLine(origin, hit.point, Color.green);
         }
 
+        _interactable?.Lost();
         _interactable = null;
         _interactPosition = new Vector3(0, 0, 0);
     }
 
-     void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         if (_interactable != null)
         {
             Gizmos.DrawWireSphere(_interactPosition, 0.5f);
         }
-        
+
         Vector3 origin = _camera.transform.position;
         Vector3 dir = _camera.transform.forward;
         Vector3 p1 = origin + _camera.transform.up * (_capsuleHeight * 0.5f);

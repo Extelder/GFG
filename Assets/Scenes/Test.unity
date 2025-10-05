@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60410b4da7b497540903aeacbbacfcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractItem
+  _meshRenderer: {fileID: 194053054}
   Item:
     rid: 1381746499383984190
   references:
@@ -989,6 +990,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
   <Shaker>k__BackingField: {fileID: 1754730374}
+  <InteractMaterial>k__BackingField: {fileID: 2100000, guid: d76d7a03e4548654ca1b5303d5b59fbc,
+    type: 2}
   <Health>k__BackingField: {fileID: 4582019823453754608}
   <PlayerTransform>k__BackingField: {fileID: 4582019823453754607}
 --- !u!1 &705507993
@@ -4548,6 +4551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60410b4da7b497540903aeacbbacfcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractItem
+  _meshRenderer: {fileID: 1130877435}
   Item:
     rid: 1381746499383984191
   references:
@@ -4841,6 +4845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60410b4da7b497540903aeacbbacfcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractItem
+  _meshRenderer: {fileID: 1199068109}
   Item:
     rid: 1381746499383984189
   references:
@@ -5485,7 +5490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644414356}
   - component: {fileID: 1644414357}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InputManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8494,9 +8499,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
   _camera: {fileID: 4582019823803625554}
-  _capsuleHeight: 0
-  _capsuleRadius: 1
-  _distance: 5
+  _capsuleHeight: 0.35
+  _capsuleRadius: 0.5
+  _distance: 2.04
   _capsuleLayerMask:
     serializedVersion: 2
     m_Bits: 128

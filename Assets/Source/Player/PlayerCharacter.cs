@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 public class PlayerCharacter : MonoBehaviour
 {
     [field: SerializeField] public Shaker Shaker { get; private set; }
+    [field: SerializeField] public Material InteractMaterial { get; private set; }
     [field: SerializeField] public PlayerHealth Health { get; private set; }
 
     [field: SerializeField] public Transform PlayerTransform { get; private set; }
