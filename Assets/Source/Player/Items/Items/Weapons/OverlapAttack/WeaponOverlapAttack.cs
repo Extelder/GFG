@@ -23,8 +23,10 @@ public class WeaponOverlapAttack : WeaponShoot
             OverlapSettings.SearchLayer);
     }
 
-    public virtual void OnShootPerformed()
+    public override void OnShootPerformed()
     {
+        base.OnShootPerformed();
+        CameraShakeInvoke();
         Overlap();
         foreach (var other in OverlapSettings.Colliders)
         {

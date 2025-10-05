@@ -93,25 +93,31 @@ namespace EvolveGames
 
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             Vector3 right = transform.TransformDirection(Vector3.right);
-            isRunning = !isCrough ? CanRunning ? Input.GetKey(KeyCode.LeftShift) : false : false;
-            vertical = canMove ? (isRunning ? RunningValue : WalkingValue) * Input.GetAxis("Vertical") : 0;
-            horizontal = canMove ? (isRunning ? RunningValue : WalkingValue) * Input.GetAxis("Horizontal") : 0;
-            if (isRunning) RunningValue = Mathf.Lerp(RunningValue, RuningSpeed, timeToRunning * Time.deltaTime);
-            else RunningValue = WalkingValue;
+
+            isRunning = !isCrough ? (CanRunning ? Input.GetKey(KeyCode.LeftShift) : false) : false;
+
+            Vector3 direction = (forward * Input.GetAxis("Vertical")) + (right * Input.GetAxis("Horizontal"));
+            if (direction.magnitude > 1f) direction.Normalize();
+
+            float currentSpeed = isRunning ? RunningValue : WalkingValue;
+
+            if (isRunning)
+                RunningValue = Mathf.Lerp(RunningValue, RuningSpeed, timeToRunning * Time.deltaTime);
+            else
+                RunningValue = WalkingValue;
+
             float movementDirectionY = moveDirection.y;
-            moveDirection = (forward * vertical) + (right * horizontal);
+            moveDirection = direction * currentSpeed;
+            moveDirection.y = movementDirectionY;
 
             if (Input.GetButton("Jump") && canMove && characterController.isGrounded && !isClimbing)
             {
                 moveDirection.y = jumpSpeed;
             }
-            else
-            {
-                moveDirection.y = movementDirectionY;
-            }
 
             characterController.Move(moveDirection * Time.deltaTime);
-            Moving = horizontal < 0 || vertical < 0 || horizontal > 0 || vertical > 0 ? true : false;
+
+            Moving = direction.magnitude > 0.1f;
 
             if (Cursor.lockState == CursorLockMode.Locked && canMove)
             {
@@ -125,7 +131,8 @@ namespace EvolveGames
 
                 if (isRunning && Moving)
                     cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, RunningFOV, SpeedToFOV * Time.deltaTime);
-                else cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, InstallFOV, SpeedToFOV * Time.deltaTime);
+                else
+                    cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, InstallFOV, SpeedToFOV * Time.deltaTime);
             }
 
             if (Input.GetKey(CroughKey))
@@ -157,6 +164,7 @@ namespace EvolveGames
                 Items.DefiniteHide = WallDistance;
             }
         }
+
 
         private void OnTriggerEnter(Collider other)
         {

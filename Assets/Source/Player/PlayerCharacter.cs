@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using MilkShake;
 using Random = UnityEngine.Random;
 
 
 public class PlayerCharacter : MonoBehaviour
 {
+    [field: SerializeField] public Shaker Shaker { get; private set; }
+    [field: SerializeField] public PlayerHealth Health { get; private set; }
+
     [field: SerializeField] public Transform PlayerTransform { get; private set; }
 
     public static PlayerCharacter Instance { get; private set; }
