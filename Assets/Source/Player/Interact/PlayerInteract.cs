@@ -51,6 +51,14 @@ public class PlayerInteract : MonoBehaviour
 
                 if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
                 {
+                    if (_interactable != null)
+                    {
+                        if (_interactable != interactable)
+                        {
+                            _interactable.Lost();
+                        }
+                    }
+                    
                     _interactable = interactable;
                     _interactable.Detected();
                     if (interactable is MonoBehaviour awawf)
@@ -68,7 +76,7 @@ public class PlayerInteract : MonoBehaviour
         _interactPosition = new Vector3(0, 0, 0);
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (_interactable != null)
         {
@@ -80,39 +88,31 @@ public class PlayerInteract : MonoBehaviour
         Vector3 p1 = origin + _camera.transform.up * (_capsuleHeight * 0.5f);
         Vector3 p2 = origin - _camera.transform.up * (_capsuleHeight * 0.5f);
 
-        // Рисуем стартовую капсулу
         DrawCapsule(p1, p2, _capsuleRadius, Color.black);
 
-        // И целевую капсулу (куда направлен CapsuleCast)
         DrawCapsule(p1 + dir * _distance, p2 + dir * _distance, _capsuleRadius, new Color(1f, 1f, 0f, 0.3f));
     }
 
-    // --- вспомогательный метод отрисовки капсулы ---
     private void DrawCapsule(Vector3 p1, Vector3 p2, float radius, Color color)
     {
         Gizmos.color = color;
 
-        // Основная линия
         Gizmos.DrawLine(p1, p2);
 
-        // Вычисляем направления
         Vector3 up = (p1 - p2).normalized;
         Vector3 right = Vector3.Cross(up, Vector3.forward);
         if (right == Vector3.zero) right = Vector3.Cross(up, Vector3.up);
         right.Normalize();
         Vector3 forward = Vector3.Cross(up, right);
 
-        // Рисуем 4 круга (верх и низ капсулы)
         DrawCircle(p1, up, radius);
         DrawCircle(p2, up, radius);
 
-        // Соединительные линии
         Gizmos.DrawLine(p1 + right * radius, p2 + right * radius);
         Gizmos.DrawLine(p1 - right * radius, p2 - right * radius);
         Gizmos.DrawLine(p1 + forward * radius, p2 + forward * radius);
         Gizmos.DrawLine(p1 - forward * radius, p2 - forward * radius);
 
-        // Полусферы сверху и снизу
         Gizmos.DrawWireSphere(p1, radius);
         Gizmos.DrawWireSphere(p2, radius);
     }

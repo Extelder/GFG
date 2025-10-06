@@ -27,23 +27,20 @@ public class InteractItem : MonoBehaviour, IInteractable
     {
         if (_detected)
             return;
+
         _detected = true;
-        _defaultMaterials = new Material[_meshRenderer.materials.Length];
-        Array.Copy(_defaultMaterials, _meshRenderer.materials, _meshRenderer.materials.Length);
 
-        for (int i = 0; i < _meshRenderer.materials.Length; i++)
+        _defaultMaterials = _meshRenderer.materials;
+
+        Material[] mats = new Material[_defaultMaterials.Length + 1];
+        for (int i = 0; i < _defaultMaterials.Length; i++)
         {
-            _defaultMaterials[i] = _meshRenderer.materials[i];
+            mats[i] = _defaultMaterials[i];
         }
 
+        mats[mats.Length - 1] = PlayerCharacter.Instance.InteractMaterial;
 
-        _meshRenderer.materials = new Material[_defaultMaterials.Length + 1];
-        for (int i = 0; i < _meshRenderer.materials.Length - 1; i++)
-        {
-            _meshRenderer.materials[i] = _defaultMaterials[i];
-        }
-
-        _meshRenderer.materials[_meshRenderer.materials.Length] = PlayerCharacter.Instance.InteractMaterial;
+        _meshRenderer.materials = mats;
     }
 
     public void Lost()
