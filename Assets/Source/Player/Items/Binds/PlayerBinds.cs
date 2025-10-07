@@ -172,6 +172,24 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch1Item"",
+                    ""type"": ""Button"",
+                    ""id"": ""205b3367-90c4-43c3-a18e-d50d0eaca098"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2eaf0ec-60c8-4f3d-af36-2aaffe32fd9a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -317,6 +335,28 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aac70950-764c-4611-952b-c88c8ae6b22c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch1Item"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87ba06b4-863c-45cf-a16d-fae813c615cd"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -340,6 +380,8 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         m_Character_OpenPanel = m_Character.FindAction("OpenPanel", throwIfNotFound: true);
         m_Character_Crouch = m_Character.FindAction("Crouch", throwIfNotFound: true);
         m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
+        m_Character_Switch1Item = m_Character.FindAction("Switch1Item", throwIfNotFound: true);
+        m_Character_OpenInventory = m_Character.FindAction("OpenInventory", throwIfNotFound: true);
     }
 
     ~@PlayerBinds()
@@ -429,6 +471,8 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_OpenPanel;
     private readonly InputAction m_Character_Crouch;
     private readonly InputAction m_Character_Interact;
+    private readonly InputAction m_Character_Switch1Item;
+    private readonly InputAction m_Character_OpenInventory;
     /// <summary>
     /// Provides access to input actions defined in input action map "Character".
     /// </summary>
@@ -476,6 +520,14 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Character/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_Character_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Character/Switch1Item".
+        /// </summary>
+        public InputAction @Switch1Item => m_Wrapper.m_Character_Switch1Item;
+        /// <summary>
+        /// Provides access to the underlying input action "Character/OpenInventory".
+        /// </summary>
+        public InputAction @OpenInventory => m_Wrapper.m_Character_OpenInventory;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -529,6 +581,12 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @Switch1Item.started += instance.OnSwitch1Item;
+            @Switch1Item.performed += instance.OnSwitch1Item;
+            @Switch1Item.canceled += instance.OnSwitch1Item;
+            @OpenInventory.started += instance.OnOpenInventory;
+            @OpenInventory.performed += instance.OnOpenInventory;
+            @OpenInventory.canceled += instance.OnOpenInventory;
         }
 
         /// <summary>
@@ -567,6 +625,12 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @Switch1Item.started -= instance.OnSwitch1Item;
+            @Switch1Item.performed -= instance.OnSwitch1Item;
+            @Switch1Item.canceled -= instance.OnSwitch1Item;
+            @OpenInventory.started -= instance.OnOpenInventory;
+            @OpenInventory.performed -= instance.OnOpenInventory;
+            @OpenInventory.canceled -= instance.OnOpenInventory;
         }
 
         /// <summary>
@@ -683,5 +747,19 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Switch1Item" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitch1Item(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenInventory(InputAction.CallbackContext context);
     }
 }

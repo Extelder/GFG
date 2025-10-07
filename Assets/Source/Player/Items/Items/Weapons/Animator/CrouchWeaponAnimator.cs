@@ -12,6 +12,12 @@ public class CrouchWeaponAnimator : WeaponAnimator
         PlayerCharacter.Instance.Binds.Character.Crouch.canceled += OnCrochCanceled;
     }
 
+    private void OnEnable()
+    {
+        PlayerCharacter.Instance.Binds.Character.Crouch.started += OnCrochStarted;
+        PlayerCharacter.Instance.Binds.Character.Crouch.canceled += OnCrochCanceled;
+    }
+
     private void OnDisable()
     {
         PlayerCharacter.Instance.Binds.Character.Crouch.started -= OnCrochStarted;
