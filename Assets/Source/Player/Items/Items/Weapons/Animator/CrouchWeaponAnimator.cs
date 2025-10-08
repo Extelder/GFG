@@ -16,6 +16,10 @@ public class CrouchWeaponAnimator : WeaponAnimator
     {
         PlayerCharacter.Instance.Binds.Character.Crouch.started += OnCrochStarted;
         PlayerCharacter.Instance.Binds.Character.Crouch.canceled += OnCrochCanceled;
+        if (PlayerCharacter.Instance.Binds.Character.Crouch.IsPressed())
+        {
+            OnCrochStarted(new InputAction.CallbackContext());
+        }
     }
 
     private void OnDisable()

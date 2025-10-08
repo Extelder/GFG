@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelUserStore">
-    <attachedFolders>
-      <Path>$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.collab-proxy@2.9.3</Path>
-    </attachedFolders>
+    <attachedFolders />
     <explicitIncludes>
       <Path>$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.collab-proxy@2.9.3</Path>
-      <Path>Assets</Path>
       <Path>Packages</Path>
       <Path>ProjectSettings</Path>
     </explicitIncludes>
     <explicitExcludes>
       <Path>.git</Path>
       <Path>.idea</Path>
-      <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Temp</Path>
       <Path>UserSettings</Path>

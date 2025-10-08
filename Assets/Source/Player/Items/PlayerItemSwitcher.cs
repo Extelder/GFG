@@ -9,11 +9,22 @@ public class PlayerItemSwitcher : MonoBehaviour
 
     private EquipItem _itemToSwitch;
 
+    private EquipItem _previousItem;
+
     public void SwitchItem(EquipItem item)
     {
+        if (CurrentItem == item || item == _itemToSwitch)
+            return;
+
         _switchAnimator.SetBool("Hide", true);
 
+        _previousItem = CurrentItem;
         _itemToSwitch = item;
+    }
+
+    public void ReturnToPreviousItem()
+    {
+        SwitchItem(_previousItem);
     }
 
     public void HideAnimationEnd()

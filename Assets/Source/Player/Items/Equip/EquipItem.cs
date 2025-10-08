@@ -5,17 +5,17 @@ using UnityEngine.InputSystem;
 public class EquipItem : MonoBehaviour
 {
     [SerializeField] private GameObject _gameObject;
-    
+
     [SerializeField] private string _actionName;
 
     [field: SerializeField] public int Id { get; private set; }
 
     public void Start()
     {
-        PlayerCharacter.Instance.Binds.FindAction(_actionName, true).performed += OnEquipACtionPerformed;
+        PlayerCharacter.Instance.Binds.FindAction(_actionName, true).performed += OnEquipActionPerformed;
     }
 
-    private void OnEquipACtionPerformed(InputAction.CallbackContext obj)
+    protected virtual void OnEquipActionPerformed(InputAction.CallbackContext obj)
     {
         PlayerCharacter.Instance.ItemSwitcher.SwitchItem(this);
     }
@@ -32,6 +32,6 @@ public class EquipItem : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerCharacter.Instance.Binds.FindAction(_actionName, true).performed -= OnEquipACtionPerformed;
+        PlayerCharacter.Instance.Binds.FindAction(_actionName, true).performed -= OnEquipActionPerformed;
     }
 }
