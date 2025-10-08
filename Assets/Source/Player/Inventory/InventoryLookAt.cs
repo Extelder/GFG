@@ -17,11 +17,11 @@ public class InventoryLookAt : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _layerMask))
         {
-            Vector3 targetPoint = hit.point + _lookOffset;
+            Vector3 targetPoint = hit.point;
             if (ignoreY)
                 targetPoint.y = transform.position.y;
 
-            Vector3 direction = (targetPoint - transform.position).normalized;
+            Vector3 direction = (targetPoint - transform.position + _lookOffset).normalized;
 
             if (direction.sqrMagnitude > 0.001f)
             {
