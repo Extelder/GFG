@@ -38,7 +38,29 @@ public class InputManager : MonoBehaviour
             DoRebind(action, bindingIndex, statusText, false, excludeMouse);
     }
 
-    private static void DoRebind(InputAction actionToRebind, int bindingIndex, Text statusText, bool allCompositeParts, bool excludeMouse)
+    public static void StartRebind(string actionName, int bindingIndex, Text statusText, bool excludeMouse,
+        out InputActionRebindingExtensions.RebindingOperation rebindingOperation)
+    {
+        rebindingOperation = null;
+        InputAction action = inputActions.asset.FindAction(actionName);
+        if (action == null || action.bindings.Count <= bindingIndex)
+        {
+            Debug.Log("Couldn't find action or binding");
+            return;
+        }
+
+        if (action.bindings[bindingIndex].isComposite)
+        {
+            var firstPartIndex = bindingIndex + 1;
+            if (firstPartIndex < action.bindings.Count && action.bindings[firstPartIndex].isComposite)
+                DoRebind(action, bindingIndex, statusText, true, excludeMouse, out rebindingOperation);
+        }
+        else
+            DoRebind(action, bindingIndex, statusText, false, excludeMouse, out rebindingOperation);
+    }
+
+    private static void DoRebind(InputAction actionToRebind, int bindingIndex, Text statusText, bool allCompositeParts,
+        bool excludeMouse)
     {
         if (actionToRebind == null || bindingIndex < 0)
             return;
@@ -54,10 +76,11 @@ public class InputManager : MonoBehaviour
             actionToRebind.Enable();
             operation.Dispose();
 
-            if(allCompositeParts)
+            if (allCompositeParts)
             {
                 var nextBindingIndex = bindingIndex + 1;
-                if (nextBindingIndex < actionToRebind.bindings.Count && actionToRebind.bindings[nextBindingIndex].isComposite)
+                if (nextBindingIndex < actionToRebind.bindings.Count &&
+                    actionToRebind.bindings[nextBindingIndex].isComposite)
                     DoRebind(actionToRebind, nextBindingIndex, statusText, allCompositeParts, excludeMouse);
             }
 
@@ -82,6 +105,53 @@ public class InputManager : MonoBehaviour
         rebind.Start(); //actually starts the rebinding process
     }
 
+    private static void DoRebind(InputAction actionToRebind, int bindingIndex, Text statusText, bool allCompositeParts,
+        bool excludeMouse, out InputActionRebindingExtensions.RebindingOperation rebindingOperation)
+    {
+        rebindingOperation = null;
+        if (actionToRebind == null || bindingIndex < 0)
+            return;
+
+       // statusText.text = $"Press a {actionToRebind.expectedControlType}";
+
+        actionToRebind.Disable();
+
+        rebindingOperation = actionToRebind.PerformInteractiveRebinding(bindingIndex);
+
+        rebindingOperation.OnComplete(operation =>
+        {
+            actionToRebind.Enable();
+            operation.Dispose();
+
+            if (allCompositeParts)
+            {
+                var nextBindingIndex = bindingIndex + 1;
+                if (nextBindingIndex < actionToRebind.bindings.Count &&
+                    actionToRebind.bindings[nextBindingIndex].isComposite)
+                    DoRebind(actionToRebind, nextBindingIndex, statusText, allCompositeParts, excludeMouse);
+            }
+
+            SaveBindingOverride(actionToRebind);
+            rebindComplete?.Invoke();
+        });
+
+        rebindingOperation.OnCancel(operation =>
+        {
+            actionToRebind.Enable();
+            operation.Dispose();
+
+            rebindCanceled?.Invoke();
+        });
+
+        rebindingOperation.WithCancelingThrough("<Keyboard>/escape");
+
+        if (excludeMouse)
+            rebindingOperation.WithControlsExcluding("Mouse");
+
+        rebindStarted?.Invoke(actionToRebind, bindingIndex);
+        rebindingOperation.Start(); //actually starts the rebinding process
+    }
+
     public static string GetBindingName(string actionName, int bindingIndex)
     {
         if (inputActions == null)
@@ -102,8 +172,8 @@ public class InputManager : MonoBehaviour
     public static void LoadBindingOverride(string actionName)
     {
         if (actionName == null)
-            return; 
-        
+            return;
+
         if (inputActions == null)
             inputActions = new PlayerBinds();
 
@@ -120,7 +190,7 @@ public class InputManager : MonoBehaviour
     {
         InputAction action = inputActions.asset.FindAction(actionName);
 
-        if(action == null || action.bindings.Count <= bindingIndex)
+        if (action == null || action.bindings.Count <= bindingIndex)
         {
             Debug.Log("Could not find action or binding");
             return;
@@ -136,5 +206,4 @@ public class InputManager : MonoBehaviour
 
         SaveBindingOverride(action);
     }
-
 }
