@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class InventoryLookAt : MonoBehaviour
 {
+    [SerializeField] private GameObject _targetObject;
+
     [SerializeField] private Camera _camera;
     [SerializeField] private LayerMask _layerMask;
 
@@ -11,24 +13,35 @@ public class InventoryLookAt : MonoBehaviour
 
     [SerializeField] private Vector3 _lookOffset = new Vector3(0f, 1f, 0f);
 
+    private Vector3 targetPoint = new Vector3(0, 0, 0);
+
+
     private void LateUpdate()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _layerMask))
+
+        RaycastHit[] hits = new RaycastHit[10];
+        hits = Physics.RaycastAll(ray, 10f, _layerMask);
+        for (int i = 0; i < hits.Length; i++)
         {
-            Vector3 targetPoint = hit.point;
-            if (ignoreY)
-                targetPoint.y = transform.position.y;
+            if (hits[i].collider == null)
+                continue;
 
-            Vector3 direction = (targetPoint - transform.position + _lookOffset).normalized;
-
-            if (direction.sqrMagnitude > 0.001f)
+            if (hits[i].collider.gameObject == _targetObject)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction, transform.up);
-                transform.rotation =
-                    Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                targetPoint = hits[i].point;
+                if (ignoreY)
+                    targetPoint.y = transform.position.y;
             }
+        }
+
+        Vector3 direction = (targetPoint - transform.position + _lookOffset).normalized;
+        if (direction.sqrMagnitude > 0.001f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction, transform.up);
+            transform.rotation =
+                Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 }

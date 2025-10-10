@@ -3105,6 +3105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9638531ab95244d81423d779f3f3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryLookAt
+  _targetObject: {fileID: 252662608}
   _camera: {fileID: 4582019823803625552}
   _layerMask:
     serializedVersion: 2
@@ -9020,7 +9021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1509496561
 RectTransform:
   m_ObjectHideFlags: 0
