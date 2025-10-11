@@ -190,6 +190,15 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchLamp"",
+                    ""type"": ""Button"",
+                    ""id"": ""3467dd69-3b9c-4b32-acc6-08807f6501d4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -357,6 +366,17 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
                     ""action"": ""OpenInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b928c3a-3b46-48eb-b63b-69723515a089"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchLamp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -382,6 +402,7 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
         m_Character_Switch1Item = m_Character.FindAction("Switch1Item", throwIfNotFound: true);
         m_Character_OpenInventory = m_Character.FindAction("OpenInventory", throwIfNotFound: true);
+        m_Character_SwitchLamp = m_Character.FindAction("SwitchLamp", throwIfNotFound: true);
     }
 
     ~@PlayerBinds()
@@ -473,6 +494,7 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_Interact;
     private readonly InputAction m_Character_Switch1Item;
     private readonly InputAction m_Character_OpenInventory;
+    private readonly InputAction m_Character_SwitchLamp;
     /// <summary>
     /// Provides access to input actions defined in input action map "Character".
     /// </summary>
@@ -528,6 +550,10 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Character/OpenInventory".
         /// </summary>
         public InputAction @OpenInventory => m_Wrapper.m_Character_OpenInventory;
+        /// <summary>
+        /// Provides access to the underlying input action "Character/SwitchLamp".
+        /// </summary>
+        public InputAction @SwitchLamp => m_Wrapper.m_Character_SwitchLamp;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -587,6 +613,9 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
             @OpenInventory.started += instance.OnOpenInventory;
             @OpenInventory.performed += instance.OnOpenInventory;
             @OpenInventory.canceled += instance.OnOpenInventory;
+            @SwitchLamp.started += instance.OnSwitchLamp;
+            @SwitchLamp.performed += instance.OnSwitchLamp;
+            @SwitchLamp.canceled += instance.OnSwitchLamp;
         }
 
         /// <summary>
@@ -631,6 +660,9 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
             @OpenInventory.started -= instance.OnOpenInventory;
             @OpenInventory.performed -= instance.OnOpenInventory;
             @OpenInventory.canceled -= instance.OnOpenInventory;
+            @SwitchLamp.started -= instance.OnSwitchLamp;
+            @SwitchLamp.performed -= instance.OnSwitchLamp;
+            @SwitchLamp.canceled -= instance.OnSwitchLamp;
         }
 
         /// <summary>
@@ -761,5 +793,12 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpenInventory(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchLamp" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchLamp(InputAction.CallbackContext context);
     }
 }

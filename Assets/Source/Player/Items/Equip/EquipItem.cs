@@ -22,12 +22,12 @@ public class EquipItem : MonoBehaviour
 
     public virtual void UnEquip()
     {
-        _gameObject.SetActive(false);
+        _gameObject?.SetActive(false);
     }
 
     public virtual void Equip()
     {
-        _gameObject.SetActive(true);
+        _gameObject?.SetActive(true);
     }
 
     private void OnDisable()
