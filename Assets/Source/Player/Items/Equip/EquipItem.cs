@@ -4,11 +4,15 @@ using UnityEngine.InputSystem;
 
 public class EquipItem : MonoBehaviour
 {
+    [SerializeField] private bool _canSpellHand;
     [SerializeField] private GameObject _gameObject;
 
     [SerializeField] private string _actionName;
 
     [field: SerializeField] public int Id { get; private set; }
+
+    public static event Action Equiped;
+    public static event Action UnEquiped;
 
     public void Start()
     {
@@ -22,11 +26,15 @@ public class EquipItem : MonoBehaviour
 
     public virtual void UnEquip()
     {
+        if (_canSpellHand)
+            UnEquiped?.Invoke();
         _gameObject?.SetActive(false);
     }
 
     public virtual void Equip()
     {
+        if (_canSpellHand)
+            Equiped?.Invoke();
         _gameObject?.SetActive(true);
     }
 
