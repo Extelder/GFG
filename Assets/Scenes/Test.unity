@@ -1545,7 +1545,7 @@ GameObject:
   - component: {fileID: 375075429}
   - component: {fileID: 375075427}
   - component: {fileID: 375075424}
-  - component: {fileID: 375075430}
+  - component: {fileID: 375075433}
   - component: {fileID: 375075422}
   - component: {fileID: 375075428}
   - component: {fileID: 375075431}
@@ -1649,8 +1649,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultWeaponShootState
   CanChanged: 1
-  Animator: {fileID: 375075430}
+  Animator: {fileID: 375075433}
   CanShoot: 1
+  _secondsToCharge: 0.3
   AlreadyShooting:
     value: 0
 --- !u!114 &375075428
@@ -1697,22 +1698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponIdleState
   CanChanged: 1
-  Animator: {fileID: 375075430}
---- !u!114 &375075430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375075420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92fe7fa9d0970954a998ee4e102ab0bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CrouchWeaponAnimator
-  <Animator>k__BackingField: {fileID: 375075422}
-  _shootAnimationTriggerName: IsShooting
-  _crouchAnimatorBool: IsCrouching
+  Animator: {fileID: 375075433}
 --- !u!114 &375075431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1739,6 +1725,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295a836eedca61e4e9b0a6745b0d8279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveAndReturnTransform
+--- !u!114 &375075433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375075420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd748f0346fe41a4bb54ce2815f402de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwordCrouchAnimator
+  <Animator>k__BackingField: {fileID: 375075422}
+  _shootAnimationTriggerName: IsShooting
+  _crouchAnimatorBool: IsCrouching
+  _chargingBoolName: IsCharging
+  _chargeAttackBoolName: IsChargeAttacking
 --- !u!1 &383173931 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8144938806350136305, guid: 3693ac65f7f45e043851e8a94dbf13ec,
@@ -11986,7 +11989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2073234871
 Transform:
   m_ObjectHideFlags: 0
