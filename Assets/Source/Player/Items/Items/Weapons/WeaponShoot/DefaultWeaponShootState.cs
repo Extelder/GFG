@@ -24,6 +24,7 @@ public class DefaultWeaponShootState : WeaponShootState
 
     public override void Enter()
     {
+        _swordCrouchAnimator.SetAnimationBool("IsChargeAttacking", false);
         CanChanged = false;
         if (_waitingForChargingCoroutine != null)
         {
@@ -45,6 +46,7 @@ public class DefaultWeaponShootState : WeaponShootState
                 if (currentSeconds <= 0)
                 {
                     _swordCrouchAnimator.Charging();
+                    StartCoroutine(Charging());
                     yield break;
                 }
             }
@@ -56,13 +58,39 @@ public class DefaultWeaponShootState : WeaponShootState
         }
     }
 
+    private IEnumerator Charging()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.02f);
+            if (!PlayerCharacter.Instance.Binds.Character.MainShoot.IsPressed())
+            {
+                Debug.Log("Charge Cancel");
+                AlreadyShooting.Value = false;
+                CanChanged = true;
+                _swordCrouchAnimator.SetAnimationBool("IsCharging", false);
+                PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnAfterAnimationEndCheckingPerformed;
+                PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnChargeReady;
+                StopAllCoroutines();
+                yield break;
+            }
+        }
+    }
+
     private void OnDisable()
     {
+        PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnChargeReady;
         PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnAfterAnimationEndCheckingPerformed;
     }
 
     public void ChargeReady()
     {
+        PlayerCharacter.Instance.Binds.Character.MainShoot.canceled += OnChargeReady;
+    }
+
+    private void OnChargeReady(InputAction.CallbackContext obj)
+    {
+        PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnChargeReady;
         _swordCrouchAnimator.ChargeAttack();
     }
 
@@ -89,6 +117,7 @@ public class DefaultWeaponShootState : WeaponShootState
     {
         StopAllCoroutines();
 
+        PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnChargeReady;
         PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnAfterAnimationEndCheckingPerformed;
         if (AlreadyShooting.Value)
             return;
@@ -101,6 +130,7 @@ public class DefaultWeaponShootState : WeaponShootState
         base.Exit();
         StopAllCoroutines();
         AlreadyShooting.Value = false;
+        PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnChargeReady;
         PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnAfterAnimationEndCheckingPerformed;
     }
 
@@ -124,6 +154,8 @@ public class DefaultWeaponShootState : WeaponShootState
                 {
                     AlreadyShooting.Value = false;
                     _swordCrouchAnimator.Charging();
+                    StartCoroutine(Charging());
+                    PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnChargeReady;
                     PlayerCharacter.Instance.Binds.Character.MainShoot.performed -=
                         OnAfterAnimationEndCheckingPerformed;
                     yield break;
@@ -133,6 +165,8 @@ public class DefaultWeaponShootState : WeaponShootState
             {
                 AlreadyShooting.Value = false;
                 CanChanged = true;
+                PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnChargeReady;
+
                 PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnAfterAnimationEndCheckingPerformed;
                 StopAllCoroutines();
                 yield break;
@@ -142,6 +176,8 @@ public class DefaultWeaponShootState : WeaponShootState
 
     private void OnAfterAnimationEndCheckingPerformed(InputAction.CallbackContext obj)
     {
+        PlayerCharacter.Instance.Binds.Character.MainShoot.canceled -= OnChargeReady;
+
         PlayerCharacter.Instance.Binds.Character.MainShoot.performed -= OnAfterAnimationEndCheckingPerformed;
         Debug.LogError("After");
         StopAllCoroutines();

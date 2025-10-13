@@ -21,7 +21,17 @@ public class LampInventoryItem : PlayerInventoryItem
         base.OnEnableVirtual();
     }
 
+    protected override void OnMouseDown()
+    {
+        EquipUnEquip();
+    }
+
     protected override void OnEquipActionPerformed(InputAction.CallbackContext obj)
+    {
+        EquipUnEquip();
+    }
+
+    private void EquipUnEquip()
     {
         _active = !_active;
         PlayerPrefs.SetInt("LampActive", Convert.ToInt16(_active));

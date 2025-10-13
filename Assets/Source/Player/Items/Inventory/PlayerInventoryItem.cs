@@ -23,6 +23,12 @@ public class PlayerInventoryItem : MonoBehaviour
         PlayerCharacter.Instance.ItemSwitcher.SwitchItem(_inventoryEquipItem);
     }
 
+    protected virtual void OnMouseDown()
+    {
+        if (_inventoryEquipItem != null)
+            PlayerCharacter.Instance.ItemSwitcher.SwitchItem(_inventoryEquipItem);
+    }
+
     public void Unlock()
     {
         Unlocked = true;
