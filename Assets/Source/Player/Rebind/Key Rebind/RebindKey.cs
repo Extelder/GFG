@@ -1,13 +1,35 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ReBindCollider : MonoBehaviour
+public class RebindKey : MonoBehaviour
 {
+    public void StartWaitingRebind()
+    {
+        if (inputActionReference != null)
+        {
+            InputManager.LoadBindingOverride(actionName);
+            GetBindingInfo();
+            UpdateUI();
+        }
+
+        DoRebind();
+
+        InputManager.rebindComplete += UpdateUI;
+        InputManager.rebindCanceled += UpdateUI;
+        Debug.Log("StartBind");
+    }
+
+    public void StopWaitingRebind()
+    {
+        Debug.Log("StopBind");
+
+        _rebindingOperation?.Cancel();
+
+        InputManager.rebindComplete -= UpdateUI;
+        InputManager.rebindCanceled -= UpdateUI;
+    }
+
     [SerializeField] private InputActionReference inputActionReference; //this is on the SO
 
     [SerializeField] private bool excludeMouse = true;
@@ -35,35 +57,9 @@ public class ReBindCollider : MonoBehaviour
         }
     }
 
-    private void OnMouseEnter()
-    {
-        Debug.Log("Mouse Enter");
-
-        if (inputActionReference != null)
-        {
-            InputManager.LoadBindingOverride(actionName);
-            GetBindingInfo();
-            UpdateUI();
-        }
-
-        DoRebind();
-
-        InputManager.rebindComplete += UpdateUI;
-        InputManager.rebindCanceled += UpdateUI;
-    }
-
-
-    private void OnMouseExit()
-    {
-
-        _rebindingOperation.Cancel();
-
-        InputManager.rebindComplete -= UpdateUI;
-        InputManager.rebindCanceled -= UpdateUI;
-    }
-
     private void OnDisable()
     {
+        StopWaitingRebind();
         _rebindingOperation?.Cancel();
 
         InputManager.rebindComplete -= UpdateUI;

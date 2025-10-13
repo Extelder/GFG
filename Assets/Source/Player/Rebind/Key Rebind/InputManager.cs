@@ -48,6 +48,8 @@ public class InputManager : MonoBehaviour
             Debug.Log("Couldn't find action or binding");
             return;
         }
+        
+        statusText.text = $"Press a {action.expectedControlType}";
 
         if (action.bindings[bindingIndex].isComposite)
         {
