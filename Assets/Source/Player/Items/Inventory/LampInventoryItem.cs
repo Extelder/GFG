@@ -23,6 +23,8 @@ public class LampInventoryItem : PlayerInventoryItem
 
     protected override void OnMouseDown()
     {
+        if (_rebind.Selected)
+            return;
         EquipUnEquip();
     }
 

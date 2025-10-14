@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInventoryItem : MonoBehaviour
 {
-    [SerializeField] private EquipItem _inventoryEquipItem;
+    [SerializeField] protected RebindKey _rebind;
+    [SerializeField] protected EquipItem _inventoryEquipItem;
 
     [field: SerializeField] public int Id { get; private set; }
 
@@ -25,6 +26,8 @@ public class PlayerInventoryItem : MonoBehaviour
 
     protected virtual void OnMouseDown()
     {
+        if (_rebind.Selected)
+            return;
         if (_inventoryEquipItem != null)
             PlayerCharacter.Instance.ItemSwitcher.SwitchItem(_inventoryEquipItem);
     }

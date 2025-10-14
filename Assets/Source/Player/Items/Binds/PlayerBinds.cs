@@ -199,6 +199,42 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RingTeleport"",
+                    ""type"": ""Button"",
+                    ""id"": ""f76a8192-c0be-447c-ba36-b35b9a57de07"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RingShield"",
+                    ""type"": ""Button"",
+                    ""id"": ""022a1ab1-efb0-44c9-b810-ed533bde50f9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RingTimeStop"",
+                    ""type"": ""Button"",
+                    ""id"": ""e89afb5c-f2ca-45fa-8f70-ff89d4ec9dd7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RingDesintegration"",
+                    ""type"": ""Button"",
+                    ""id"": ""236d77a8-5c13-4732-93ea-f11117aca342"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -377,6 +413,50 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchLamp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcf0887b-21b2-4ad1-9a8f-f05f90c505c2"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RingTeleport"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1ea4e6d-b3d1-4496-a4a8-e72be5ffed8d"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RingShield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""108eafe5-c292-44b8-9917-44e9e583780b"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RingTimeStop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f06ce16e-9f3f-44ef-a885-764f5f02a68a"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RingDesintegration"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -403,6 +483,10 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         m_Character_Switch1Item = m_Character.FindAction("Switch1Item", throwIfNotFound: true);
         m_Character_OpenInventory = m_Character.FindAction("OpenInventory", throwIfNotFound: true);
         m_Character_SwitchLamp = m_Character.FindAction("SwitchLamp", throwIfNotFound: true);
+        m_Character_RingTeleport = m_Character.FindAction("RingTeleport", throwIfNotFound: true);
+        m_Character_RingShield = m_Character.FindAction("RingShield", throwIfNotFound: true);
+        m_Character_RingTimeStop = m_Character.FindAction("RingTimeStop", throwIfNotFound: true);
+        m_Character_RingDesintegration = m_Character.FindAction("RingDesintegration", throwIfNotFound: true);
     }
 
     ~@PlayerBinds()
@@ -495,6 +579,10 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_Switch1Item;
     private readonly InputAction m_Character_OpenInventory;
     private readonly InputAction m_Character_SwitchLamp;
+    private readonly InputAction m_Character_RingTeleport;
+    private readonly InputAction m_Character_RingShield;
+    private readonly InputAction m_Character_RingTimeStop;
+    private readonly InputAction m_Character_RingDesintegration;
     /// <summary>
     /// Provides access to input actions defined in input action map "Character".
     /// </summary>
@@ -554,6 +642,22 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Character/SwitchLamp".
         /// </summary>
         public InputAction @SwitchLamp => m_Wrapper.m_Character_SwitchLamp;
+        /// <summary>
+        /// Provides access to the underlying input action "Character/RingTeleport".
+        /// </summary>
+        public InputAction @RingTeleport => m_Wrapper.m_Character_RingTeleport;
+        /// <summary>
+        /// Provides access to the underlying input action "Character/RingShield".
+        /// </summary>
+        public InputAction @RingShield => m_Wrapper.m_Character_RingShield;
+        /// <summary>
+        /// Provides access to the underlying input action "Character/RingTimeStop".
+        /// </summary>
+        public InputAction @RingTimeStop => m_Wrapper.m_Character_RingTimeStop;
+        /// <summary>
+        /// Provides access to the underlying input action "Character/RingDesintegration".
+        /// </summary>
+        public InputAction @RingDesintegration => m_Wrapper.m_Character_RingDesintegration;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -616,6 +720,18 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
             @SwitchLamp.started += instance.OnSwitchLamp;
             @SwitchLamp.performed += instance.OnSwitchLamp;
             @SwitchLamp.canceled += instance.OnSwitchLamp;
+            @RingTeleport.started += instance.OnRingTeleport;
+            @RingTeleport.performed += instance.OnRingTeleport;
+            @RingTeleport.canceled += instance.OnRingTeleport;
+            @RingShield.started += instance.OnRingShield;
+            @RingShield.performed += instance.OnRingShield;
+            @RingShield.canceled += instance.OnRingShield;
+            @RingTimeStop.started += instance.OnRingTimeStop;
+            @RingTimeStop.performed += instance.OnRingTimeStop;
+            @RingTimeStop.canceled += instance.OnRingTimeStop;
+            @RingDesintegration.started += instance.OnRingDesintegration;
+            @RingDesintegration.performed += instance.OnRingDesintegration;
+            @RingDesintegration.canceled += instance.OnRingDesintegration;
         }
 
         /// <summary>
@@ -663,6 +779,18 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
             @SwitchLamp.started -= instance.OnSwitchLamp;
             @SwitchLamp.performed -= instance.OnSwitchLamp;
             @SwitchLamp.canceled -= instance.OnSwitchLamp;
+            @RingTeleport.started -= instance.OnRingTeleport;
+            @RingTeleport.performed -= instance.OnRingTeleport;
+            @RingTeleport.canceled -= instance.OnRingTeleport;
+            @RingShield.started -= instance.OnRingShield;
+            @RingShield.performed -= instance.OnRingShield;
+            @RingShield.canceled -= instance.OnRingShield;
+            @RingTimeStop.started -= instance.OnRingTimeStop;
+            @RingTimeStop.performed -= instance.OnRingTimeStop;
+            @RingTimeStop.canceled -= instance.OnRingTimeStop;
+            @RingDesintegration.started -= instance.OnRingDesintegration;
+            @RingDesintegration.performed -= instance.OnRingDesintegration;
+            @RingDesintegration.canceled -= instance.OnRingDesintegration;
         }
 
         /// <summary>
@@ -800,5 +928,33 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSwitchLamp(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RingTeleport" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRingTeleport(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RingShield" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRingShield(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RingTimeStop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRingTimeStop(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RingDesintegration" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRingDesintegration(InputAction.CallbackContext context);
     }
 }

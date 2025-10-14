@@ -113,6 +113,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RingTeleport",
+                    "type": "Button",
+                    "id": "f76a8192-c0be-447c-ba36-b35b9a57de07",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RingShield",
+                    "type": "Button",
+                    "id": "022a1ab1-efb0-44c9-b810-ed533bde50f9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RingTimeStop",
+                    "type": "Button",
+                    "id": "e89afb5c-f2ca-45fa-8f70-ff89d4ec9dd7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RingDesintegration",
+                    "type": "Button",
+                    "id": "236d77a8-5c13-4732-93ea-f11117aca342",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -289,6 +325,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwitchLamp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bcf0887b-21b2-4ad1-9a8f-f05f90c505c2",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RingTeleport",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1ea4e6d-b3d1-4496-a4a8-e72be5ffed8d",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RingShield",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "108eafe5-c292-44b8-9917-44e9e583780b",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RingTimeStop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f06ce16e-9f3f-44ef-a885-764f5f02a68a",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RingDesintegration",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

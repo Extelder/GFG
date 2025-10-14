@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class RebindKey : MonoBehaviour
+public class RebindKey : MonoBehaviour, IPointerEnterHandler
 {
+    public bool Selected { get; private set; }
+
+
     public void StartWaitingRebind()
     {
         if (inputActionReference != null)
@@ -15,6 +19,7 @@ public class RebindKey : MonoBehaviour
 
         DoRebind();
 
+        Selected = true;
         InputManager.rebindComplete += UpdateUI;
         InputManager.rebindCanceled += UpdateUI;
         Debug.Log("StartBind");
@@ -22,6 +27,7 @@ public class RebindKey : MonoBehaviour
 
     public void StopWaitingRebind()
     {
+        Selected = false;
         Debug.Log("StopBind");
 
         _rebindingOperation?.Cancel();
@@ -59,6 +65,7 @@ public class RebindKey : MonoBehaviour
 
     private void OnDisable()
     {
+        Selected = false;
         StopWaitingRebind();
         _rebindingOperation?.Cancel();
 
@@ -103,5 +110,10 @@ public class RebindKey : MonoBehaviour
     private void DoRebind()
     {
         InputManager.StartRebind(actionName, bindingIndex, rebindText, excludeMouse, out _rebindingOperation);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Selected = true;
     }
 }
