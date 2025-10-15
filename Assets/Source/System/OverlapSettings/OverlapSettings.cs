@@ -41,5 +41,8 @@ public class OverlapSettings : MonoBehaviour
     }
 
 
-
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(OverlapPoint.position, SphereRadius);
+    }
 }

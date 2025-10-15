@@ -65,6 +65,8 @@ namespace EvolveGames
         bool WallDistance;
         [HideInInspector] public float WalkingValue;
 
+        public bool Crouching;
+
         void Start()
         {
             characterController = GetComponent<CharacterController>();
@@ -135,7 +137,7 @@ namespace EvolveGames
                     cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, InstallFOV, SpeedToFOV * Time.deltaTime);
             }
 
-            if (Input.GetKey(CroughKey))
+            if (Input.GetKey(CroughKey) || Crouching == true)
             {
                 isCrough = true;
                 float Height = Mathf.Lerp(characterController.height, CroughHeight, 5 * Time.deltaTime);
@@ -143,7 +145,7 @@ namespace EvolveGames
                 WalkingValue = Mathf.Lerp(WalkingValue, CroughSpeed, 6 * Time.deltaTime);
             }
             else if (!Physics.Raycast(GetComponentInChildren<Camera>().transform.position,
-                transform.TransformDirection(Vector3.up), out CroughCheck, 0.8f, 1))
+                transform.TransformDirection(Vector3.up), out CroughCheck, 0.8f, 1) && !Crouching)
             {
                 if (characterController.height != InstallCroughHeight)
                 {
@@ -163,6 +165,21 @@ namespace EvolveGames
                 Items.ani.SetBool("Hide", WallDistance);
                 Items.DefiniteHide = WallDistance;
             }
+        }
+
+        public void Crouch()
+        {
+            isCrough = true;
+            characterController.height = CroughHeight;
+            WalkingValue = CroughSpeed;
+            Crouching = true;
+            StartCoroutine(RecoverCrouch());
+        }
+
+        private IEnumerator RecoverCrouch()
+        {
+            yield return new WaitForSeconds(0.2f);
+            Crouching = false;
         }
 
 

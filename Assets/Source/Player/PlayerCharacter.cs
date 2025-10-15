@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EvolveGames;
 using UniRx;
 using UnityEngine;
 using MilkShake;
@@ -10,6 +11,8 @@ using Random = UnityEngine.Random;
 public class PlayerCharacter : MonoBehaviour
 {
     [field: SerializeField] public Shaker Shaker { get; private set; }
+    [field: SerializeField] public CharacterController CharacterController { get; private set; }
+    [field: SerializeField] public PlayerController PlayerController { get; private set; }
     [field: SerializeField] public PlayerItemSwitcher ItemSwitcher { get; private set; }
     [field: SerializeField] public Material InteractMaterial { get; private set; }
     [field: SerializeField] public PlayerHealth Health { get; private set; }
@@ -20,6 +23,13 @@ public class PlayerCharacter : MonoBehaviour
 
     public PlayerBinds Binds { get; private set; }
 
+
+    public void Teleport(Vector3 point)
+    {
+        CharacterController.enabled = false;
+        PlayerTransform.position = point;
+        CharacterController.enabled = true;
+    }
 
     private void Awake()
     {

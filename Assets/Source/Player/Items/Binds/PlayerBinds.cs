@@ -235,6 +235,24 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RingAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""dfc41f28-e598-4a99-b1a0-1b791438571d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CancelAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""bbbffa16-9aac-45e1-85ed-51af220c2199"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -457,6 +475,28 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
                     ""action"": ""RingDesintegration"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""800a6650-b78f-4501-8194-0f8bd83fa2e1"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RingAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""680d7939-459c-4f52-b902-8e08b7767d8d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -487,6 +527,8 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         m_Character_RingShield = m_Character.FindAction("RingShield", throwIfNotFound: true);
         m_Character_RingTimeStop = m_Character.FindAction("RingTimeStop", throwIfNotFound: true);
         m_Character_RingDesintegration = m_Character.FindAction("RingDesintegration", throwIfNotFound: true);
+        m_Character_RingAbility = m_Character.FindAction("RingAbility", throwIfNotFound: true);
+        m_Character_CancelAction = m_Character.FindAction("CancelAction", throwIfNotFound: true);
     }
 
     ~@PlayerBinds()
@@ -583,6 +625,8 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_RingShield;
     private readonly InputAction m_Character_RingTimeStop;
     private readonly InputAction m_Character_RingDesintegration;
+    private readonly InputAction m_Character_RingAbility;
+    private readonly InputAction m_Character_CancelAction;
     /// <summary>
     /// Provides access to input actions defined in input action map "Character".
     /// </summary>
@@ -659,6 +703,14 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @RingDesintegration => m_Wrapper.m_Character_RingDesintegration;
         /// <summary>
+        /// Provides access to the underlying input action "Character/RingAbility".
+        /// </summary>
+        public InputAction @RingAbility => m_Wrapper.m_Character_RingAbility;
+        /// <summary>
+        /// Provides access to the underlying input action "Character/CancelAction".
+        /// </summary>
+        public InputAction @CancelAction => m_Wrapper.m_Character_CancelAction;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Character; }
@@ -732,6 +784,12 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
             @RingDesintegration.started += instance.OnRingDesintegration;
             @RingDesintegration.performed += instance.OnRingDesintegration;
             @RingDesintegration.canceled += instance.OnRingDesintegration;
+            @RingAbility.started += instance.OnRingAbility;
+            @RingAbility.performed += instance.OnRingAbility;
+            @RingAbility.canceled += instance.OnRingAbility;
+            @CancelAction.started += instance.OnCancelAction;
+            @CancelAction.performed += instance.OnCancelAction;
+            @CancelAction.canceled += instance.OnCancelAction;
         }
 
         /// <summary>
@@ -791,6 +849,12 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
             @RingDesintegration.started -= instance.OnRingDesintegration;
             @RingDesintegration.performed -= instance.OnRingDesintegration;
             @RingDesintegration.canceled -= instance.OnRingDesintegration;
+            @RingAbility.started -= instance.OnRingAbility;
+            @RingAbility.performed -= instance.OnRingAbility;
+            @RingAbility.canceled -= instance.OnRingAbility;
+            @CancelAction.started -= instance.OnCancelAction;
+            @CancelAction.performed -= instance.OnCancelAction;
+            @CancelAction.canceled -= instance.OnCancelAction;
         }
 
         /// <summary>
@@ -956,5 +1020,19 @@ public partial class @PlayerBinds: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRingDesintegration(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RingAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRingAbility(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CancelAction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCancelAction(InputAction.CallbackContext context);
     }
 }
