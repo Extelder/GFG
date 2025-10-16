@@ -12,6 +12,7 @@ public class PlayerCharacter : MonoBehaviour
 {
     [field: SerializeField] public Shaker Shaker { get; private set; }
     [field: SerializeField] public CharacterController CharacterController { get; private set; }
+    [field: SerializeField] public TimeStop TimeStop { get; private set; }
     [field: SerializeField] public PlayerController PlayerController { get; private set; }
     [field: SerializeField] public PlayerItemSwitcher ItemSwitcher { get; private set; }
     [field: SerializeField] public Material InteractMaterial { get; private set; }

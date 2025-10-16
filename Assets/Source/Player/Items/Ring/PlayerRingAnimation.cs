@@ -24,7 +24,7 @@ public class PlayerRingAnimation : PlayerRing
     {
         _animator.Play(_beginAnimName);
 
-        _animator.CrossFadeInFixedTime(_stayAnimName, 1f);
+        _animator.CrossFade(_stayAnimName, 0.5f);
     }
 
     protected override void CancelAction()

@@ -25,7 +25,7 @@ namespace EvolveGames
 
         [SerializeField] float SpeedToFOV = 4.0f;
         [SerializeField] float CroughHeight = 1.0f;
-        [SerializeField] float gravity = 20.0f;
+        [SerializeField] public float gravity = 20.0f;
         [SerializeField] float timeToRunning = 2.0f;
         [HideInInspector] public bool canMove = true;
         [HideInInspector] public bool CanRunning = true;
@@ -45,6 +45,7 @@ namespace EvolveGames
         [Space(20)] [Header("Input")] [SerializeField]
         KeyCode CroughKey = KeyCode.LeftControl;
 
+        public float SensetivityMultiplier = 1f;
 
         [HideInInspector] public CharacterController characterController;
         [HideInInspector] public Vector3 moveDirection = Vector3.zero;
@@ -66,7 +67,7 @@ namespace EvolveGames
         [HideInInspector] public float WalkingValue;
 
         public bool HelpCrouching;
-        
+
         public bool Crouching;
 
         void Start()
@@ -125,8 +126,8 @@ namespace EvolveGames
 
             if (Cursor.lockState == CursorLockMode.Locked && canMove)
             {
-                Lookvertical = -Input.GetAxis("Mouse Y");
-                Lookhorizontal = Input.GetAxis("Mouse X");
+                Lookvertical = -Input.GetAxis("Mouse Y") * SensetivityMultiplier;
+                Lookhorizontal = Input.GetAxis("Mouse X") * SensetivityMultiplier;
 
                 rotationX += Lookvertical * lookSpeed;
                 rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);

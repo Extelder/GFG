@@ -18,8 +18,13 @@ public class TeleportRing : PlayerRing
 
     private bool _ableToTeleport;
 
+    private float _defaultGravitiy;
+
+
     protected override void OnRingAbilityBindStarted(InputAction.CallbackContext obj)
     {
+        _defaultGravitiy = PlayerCharacter.Instance.PlayerController.gravity;
+        PlayerCharacter.Instance.TimeStop.SetTimeValue(0.5f, true);
         _disposable.Clear();
         _blinkEffect.gameObject.SetActive(true);
 
@@ -39,6 +44,8 @@ public class TeleportRing : PlayerRing
 
     protected override void CancelAction()
     {
+        PlayerCharacter.Instance.TimeStop.SetTimeValue(1, false);
+        PlayerCharacter.Instance.PlayerController.gravity = _defaultGravitiy;
         _blinkEffect.gameObject.SetActive(false);
         _disposable.Clear();
         _ableToTeleport = false;
@@ -46,11 +53,14 @@ public class TeleportRing : PlayerRing
 
     protected override void OnRingAbilityBindCanceled(InputAction.CallbackContext obj)
     {
+        PlayerCharacter.Instance.TimeStop.SetTimeValue(1, false);
+
         _disposable.Clear();
         if (_ableToTeleport)
         {
             _blinkEffect.Blinked();
         }
+
         _blinkEffect.gameObject.SetActive(false);
     }
 }
