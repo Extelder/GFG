@@ -14,7 +14,7 @@ public class TeleportRing : PlayerRing
 
     private CompositeDisposable _disposable = new CompositeDisposable();
 
-    private RaycastHit _hit;
+    public RaycastHit Hit;
 
     private bool _ableToTeleport;
 
@@ -25,10 +25,10 @@ public class TeleportRing : PlayerRing
 
         Observable.EveryUpdate().Subscribe(_ =>
         {
-            if (Physics.Raycast(_camera.position, _camera.forward, out _hit, _range, _teleportLayerMask))
+            if (Physics.Raycast(_camera.position, _camera.forward, out Hit, _range, _teleportLayerMask))
             {
-                _blinkEffect.transform.position = _hit.point;
-                _blinkEffect.transform.up = _hit.normal;
+                _blinkEffect.transform.position = Hit.point;
+                _blinkEffect.transform.up = Hit.normal;
                 _ableToTeleport = true;
                 return;
             }
@@ -51,5 +51,6 @@ public class TeleportRing : PlayerRing
         {
             _blinkEffect.Blinked();
         }
+        _blinkEffect.gameObject.SetActive(false);
     }
 }

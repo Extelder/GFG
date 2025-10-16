@@ -48,7 +48,7 @@ namespace EvolveGames
 
         [HideInInspector] public CharacterController characterController;
         [HideInInspector] public Vector3 moveDirection = Vector3.zero;
-        bool isCrough = false;
+        public bool isCrough = false;
         float InstallCroughHeight;
         float rotationX = 0;
         [HideInInspector] public bool isRunning = false;
@@ -65,6 +65,8 @@ namespace EvolveGames
         bool WallDistance;
         [HideInInspector] public float WalkingValue;
 
+        public bool HelpCrouching;
+        
         public bool Crouching;
 
         void Start()

@@ -16,9 +16,22 @@ public class CrouchWeaponAnimator : WeaponAnimator
     {
         PlayerCharacter.Instance.Binds.Character.Crouch.started += OnCrochStarted;
         PlayerCharacter.Instance.Binds.Character.Crouch.canceled += OnCrochCanceled;
-        if (PlayerCharacter.Instance.Binds.Character.Crouch.IsPressed())
+        if (PlayerCharacter.Instance.Binds.Character.Crouch.IsPressed() ||
+            PlayerCharacter.Instance.PlayerController.isCrough)
         {
             OnCrochStarted(new InputAction.CallbackContext());
+        }
+    }
+
+    private void Update()
+    {
+        if (PlayerCharacter.Instance.PlayerController.isCrough)
+        {
+            SetAnimationBool(_crouchAnimatorBool, true);
+        }
+        else
+        {
+            SetAnimationBool(_crouchAnimatorBool, false);
         }
     }
 
