@@ -10,9 +10,22 @@ public class PlayerHealth : Health
 
     public bool IsDead { get; private set; }
 
+    public override void VirtualStart()
+    {
+        base.VirtualStart();
+        TakeDamage(50);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Heal(1);
+        }
+    }
+
     public override void TakeDamage(float value)
     {
-
         base.TakeDamage(value);
         if (value > 100)
         {

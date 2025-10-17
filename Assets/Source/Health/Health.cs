@@ -41,7 +41,6 @@ public abstract class Health : MonoBehaviour
         Dead?.Invoke();
         Death();
     }
-
     public void Heal(float value)
     {
         if (IsDead())

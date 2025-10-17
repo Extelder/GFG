@@ -172,10 +172,10 @@ namespace EvolveGames
 
         public void Crouch()
         {
+            Crouching = true;
             isCrough = true;
             characterController.height = CroughHeight;
             WalkingValue = CroughSpeed;
-            Crouching = true;
             StartCoroutine(RecoverCrouch());
         }
 
