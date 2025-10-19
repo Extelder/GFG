@@ -4,7 +4,6 @@
     <attachedFolders />
     <explicitIncludes>
       <Path>$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.collab-proxy@2.9.3</Path>
-      <Path>Packages</Path>
       <Path>ProjectSettings</Path>
     </explicitIncludes>
     <explicitExcludes>
