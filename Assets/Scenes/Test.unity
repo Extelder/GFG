@@ -1587,7 +1587,7 @@ Transform:
   m_GameObject: {fileID: 223081861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.40149, y: 2.888, z: 14.16689}
+  m_LocalPosition: {x: 37.301, y: 2.888, z: 14.237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2230,7 +2230,11 @@ GameObject:
   - component: {fileID: 374286208}
   - component: {fileID: 374286207}
   - component: {fileID: 374286209}
-  - component: {fileID: 374286210}
+  - component: {fileID: 374286211}
+  - component: {fileID: 374286213}
+  - component: {fileID: 374286212}
+  - component: {fileID: 374286214}
+  - component: {fileID: 374286215}
   m_Layer: 9
   m_Name: Smile
   m_TagString: Untagged
@@ -2249,9 +2253,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.35
   m_Speed: 3.5
-  m_Acceleration: 839.9
+  m_Acceleration: 2000
   avoidancePriority: 50
-  m_AngularSpeed: 839.9
+  m_AngularSpeed: 2000
   m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -2288,7 +2292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260551d4ba58ba54fb0d967a08357441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitNavMeshMove
---- !u!114 &374286210
+  _animator: {fileID: 1141455160}
+  _agent: {fileID: 374286207}
+--- !u!114 &374286211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2297,14 +2303,72 @@ MonoBehaviour:
   m_GameObject: {fileID: 374286206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4400a636293a7e840aa227f8ffa165e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fa1e00e1a39399419a9c21f6b6fb942, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnitNavMeshPatrol
+  m_EditorClassIdentifier: Assembly-CSharp::AggresiveUnitStateMachine
+  _notStartOnEnable: 0
+  _startState: {fileID: 374286213}
+  <MoveState>k__BackingField: {fileID: 374286213}
+  <ChaseState>k__BackingField: {fileID: 374286212}
+  <InspectChase>k__BackingField: {fileID: 374286214}
+  <AttackState>k__BackingField: {fileID: 374286215}
+--- !u!114 &374286212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374286206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a239977e6bff34599de6a780a59426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitChasePlayerState
+  CanChanged: 1
+--- !u!114 &374286213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374286206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ca741c78953ac47a5183a428b0d8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitPatrolState
+  CanChanged: 1
   _navMeshMove: {fileID: 374286209}
   _points:
   - {fileID: 1917550511}
   - {fileID: 1462046904}
   - {fileID: 2000531338}
+--- !u!114 &374286214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374286206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67bf032490d39b04b9c33e800bcf5147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitInspectState
+  CanChanged: 1
+--- !u!114 &374286215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374286206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc466dc40c7df948922d4ee8885c73d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitAttackState
+  CanChanged: 1
 --- !u!1 &375075420
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,7 +3055,7 @@ PrefabInstance:
     - target: {fileID: 8279916314319315260, guid: 825775c2db67e634791f8dc23367d07f,
         type: 3}
       propertyPath: m_Text
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8333151883814786678, guid: 825775c2db67e634791f8dc23367d07f,
         type: 3}
@@ -8584,7 +8648,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9557b04f9ad4b3944ba58282329bf224,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1141455160}
   m_SourcePrefab: {fileID: 100100000, guid: 9557b04f9ad4b3944ba58282329bf224, type: 3}
 --- !u!4 &1141455157 stripped
 Transform:
@@ -8592,6 +8660,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1141455156}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1141455158 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 9557b04f9ad4b3944ba58282329bf224,
+    type: 3}
+  m_PrefabInstance: {fileID: 1141455156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1141455159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9557b04f9ad4b3944ba58282329bf224,
+    type: 3}
+  m_PrefabInstance: {fileID: 1141455156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1141455160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141455159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673acb4ed99c30a46ad2f4cf4eac3db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultEnemyAnimator
+  <Animator>k__BackingField: {fileID: 1141455158}
+  _moveBool: IsWalking
 --- !u!1 &1159960334
 GameObject:
   m_ObjectHideFlags: 0
@@ -10613,7 +10707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebab69ee741e1c64ba3f6cfc0d76ffe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolPoint
-  <TimeOnPoint>k__BackingField: 1
+  <TimeOnPoint>k__BackingField: 3
 --- !u!114 &1465339973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15364,7 +15458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebab69ee741e1c64ba3f6cfc0d76ffe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolPoint
-  <TimeOnPoint>k__BackingField: 1
+  <TimeOnPoint>k__BackingField: 3
 --- !u!1 &1918352738
 GameObject:
   m_ObjectHideFlags: 0
@@ -16348,7 +16442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebab69ee741e1c64ba3f6cfc0d76ffe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolPoint
-  <TimeOnPoint>k__BackingField: 1
+  <TimeOnPoint>k__BackingField: 3
 --- !u!1 &2033047444
 GameObject:
   m_ObjectHideFlags: 0

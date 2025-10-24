@@ -1,31 +1,45 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class UnitNavMeshMove : MonoBehaviour
 {
-    private float _currentPointPriority;
-    private NavMeshAgent _agent;
+    [SerializeField] private DefaultEnemyAnimator _animator;
 
-    private void Awake()
-    {
-        _agent = GetComponent<NavMeshAgent>();
-    }
+    private float _currentPointPriority;
+    [SerializeField] private NavMeshAgent _agent;
+
 
     public void MoveToAnPoint(Vector3 point, float priority)
     {
+        StopAllCoroutines();
+
         if (_currentPointPriority < priority)
         {
-            _agent.SetDestination(point);
+            SetDestination(point);
             return;
         }
 
         if (_agent.remainingDistance <= 1f)
         {
-            _agent.SetDestination(point);
+            SetDestination(point);
         }
     }
 
-    public bool AgentReachDestination() => _agent.remainingDistance <= 0.5f;
+    public void SetDestination(Vector3 point)
+    {
+        _agent.SetDestination(point);
+        _animator.Move();
+        StartCoroutine(WaitingForEnd());
+    }
+
+    private IEnumerator WaitingForEnd()
+    {
+        yield return new WaitUntil(() => AgentReachDestination() == true);
+        _animator.Idle();
+    }
+
+    public bool AgentReachDestination() => _agent.remainingDistance <= 0.1f;
 }
