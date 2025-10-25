@@ -3,7 +3,7 @@ using UnityEngine;
 public class AggresiveUnitStateMachine : UnitMoveStateMachine
 {
     [field: SerializeField] protected State ChaseState { get; private set; }
-    [field: SerializeField] protected State InspectChase { get; private set; }
+    [field: SerializeField] protected UnitInspectState InspectState { get; private set; }
     [field: SerializeField] protected State AttackState { get; private set; }
 
     public void Chase()
@@ -11,9 +11,10 @@ public class AggresiveUnitStateMachine : UnitMoveStateMachine
         ChangeState(ChaseState);
     }
 
-    public void Inspect()
+    public void Inspect(Vector3 inspectPoint)
     {
-        ChangeState(InspectChase);
+        InspectState.ChangeInspectPoint(inspectPoint);
+        ChangeState(InspectState);
     }
 
     public void Attack()

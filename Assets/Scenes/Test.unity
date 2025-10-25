@@ -2278,6 +2278,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1141455157}
+  - {fileID: 2006354954}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &374286209
@@ -2310,7 +2311,7 @@ MonoBehaviour:
   _startState: {fileID: 374286213}
   <MoveState>k__BackingField: {fileID: 374286213}
   <ChaseState>k__BackingField: {fileID: 374286212}
-  <InspectChase>k__BackingField: {fileID: 374286214}
+  <InspectState>k__BackingField: {fileID: 374286214}
   <AttackState>k__BackingField: {fileID: 374286215}
 --- !u!114 &374286212
 MonoBehaviour:
@@ -2356,6 +2357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitInspectState
   CanChanged: 1
+  _unitAnimator: {fileID: 1141455160}
+  _move: {fileID: 374286209}
 --- !u!114 &374286215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16443,6 +16446,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolPoint
   <TimeOnPoint>k__BackingField: 3
+--- !u!1 &2006354953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006354954}
+  - component: {fileID: 2006354955}
+  m_Layer: 9
+  m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2006354954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006354953}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.192333, z: -0, w: 0.98132974}
+  m_LocalPosition: {x: 0, y: 1.941, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 374286208}
+  m_LocalEulerAnglesHint: {x: 0, y: -22.178, z: 0}
+--- !u!114 &2006354955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006354953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4712aa42587c56641a906394facbfa84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitPlayerDetector
+  horizontalRays: 10
+  verticalRays: 6
+  fieldOfView: 90
+  verticalFov: 60
+  maxDistance: 30.5
+  raysPerFrame: 30
+  updateDelay: 0.1
+  visionMask:
+    serializedVersion: 2
+    m_Bits: 65
+  chaseDelay: 0
+  stateMachine: {fileID: 374286211}
 --- !u!1 &2033047444
 GameObject:
   m_ObjectHideFlags: 0
