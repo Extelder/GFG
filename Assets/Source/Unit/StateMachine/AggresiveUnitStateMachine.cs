@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AggresiveUnitStateMachine : UnitMoveStateMachine
@@ -9,6 +10,11 @@ public class AggresiveUnitStateMachine : UnitMoveStateMachine
     public void Chase()
     {
         ChangeState(ChaseState);
+    }
+
+    private void Update()
+    {
+        Debug.Log(CurrentState);
     }
 
     public void Inspect(Vector3 inspectPoint)
