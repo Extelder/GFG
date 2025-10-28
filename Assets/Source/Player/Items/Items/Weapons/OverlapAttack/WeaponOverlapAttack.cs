@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class WeaponOverlapAttack : WeaponShoot
 {
-    [field :SerializeField] public float Damage { get; set; }
+    [SerializeField] private Transform _camera;
 
-    [field :SerializeField] public OverlapSettings OverlapSettings { get; private set; }
+    [SerializeField] private GameObject _hitEffect;
+
+    [field: SerializeField] public float Damage { get; set; }
+
+    [field: SerializeField] public OverlapSettings OverlapSettings { get; private set; }
 
     private void OnEnable()
     {
@@ -23,6 +27,16 @@ public class WeaponOverlapAttack : WeaponShoot
             OverlapSettings.SearchLayer);
     }
 
+    public void StartOverlapAttack()
+    {
+        //_overlapAttackObject.StartCheckingForAttack();
+    }
+
+    public void StopOverlapAttack()
+    {
+        //_overlapAttackObject.StopCheckingForAttack();
+    }
+
     public override void OnShootPerformed()
     {
         base.OnShootPerformed();
@@ -32,18 +46,31 @@ public class WeaponOverlapAttack : WeaponShoot
         {
             if (other == null)
                 continue;
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(_camera.position, _camera.forward +
+                other.ClosestPoint(transform.position) - transform.position,
+                out hit, 100,
+                OverlapSettings.SearchLayer))
+            {
+                Instantiate(_hitEffect, hit.point, Quaternion.identity);
+            }
+
+
             if (other.TryGetComponent<IWeaponVisitor>(out IWeaponVisitor weaponVisitor))
             {
                 weaponVisitor.Visit(this);
             }
         }
     }
-    
+
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(OverlapSettings.OverlapPoint.position, OverlapSettings.SphereRadius);
     }
-    
+
     private void OnDisable()
     {
         WeaponShootState.ShootPerformed -= OnShootPerformed;
