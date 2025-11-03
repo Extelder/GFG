@@ -7,7 +7,6 @@ public class WeaponOverlapAttack : WeaponShoot
 {
     [SerializeField] private Transform _camera;
 
-    [SerializeField] private GameObject _hitEffect;
 
     [field: SerializeField] public float Damage { get; set; }
 
@@ -54,13 +53,11 @@ public class WeaponOverlapAttack : WeaponShoot
                 out hit, 100,
                 OverlapSettings.SearchLayer))
             {
-                Instantiate(_hitEffect, hit.point, Quaternion.identity);
-            }
+                if (other.TryGetComponent<IWeaponVisitor>(out IWeaponVisitor weaponVisitor))
+                {
+                    weaponVisitor.Visit(this, hit);
+                }
 
-
-            if (other.TryGetComponent<IWeaponVisitor>(out IWeaponVisitor weaponVisitor))
-            {
-                weaponVisitor.Visit(this);
             }
         }
     }

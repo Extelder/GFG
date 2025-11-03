@@ -6,6 +6,6 @@ public interface IWeaponVisitor
 {
     public void Visit(WeaponShoot weaponShoot);
     public void Visit(RaycastWeaponShoot raycastWeaponShoot, RaycastHit hit);
-    public void Visit(WeaponOverlapAttack weaponOverlapAttack);
+    public void Visit(WeaponOverlapAttack weaponOverlapAttack, RaycastHit hit);
     public void Visit(Projectile projectile);
 }

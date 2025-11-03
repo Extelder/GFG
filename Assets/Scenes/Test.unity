@@ -2241,7 +2241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &374286207
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2461,7 +2461,6 @@ MonoBehaviour:
     type: 2}
   CurrentShootOffset: {x: 0, y: 0, z: 0}
   _camera: {fileID: 4582019823803625554}
-  _hitEffect: {fileID: 1778493222}
   <Damage>k__BackingField: 20
   <OverlapSettings>k__BackingField: {fileID: 375075428}
 --- !u!114 &375075426
